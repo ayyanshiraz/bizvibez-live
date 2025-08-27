@@ -1,7 +1,7 @@
 body {
   /* --- BACKGROUND IMAGE --- */
   /* Make sure your image is named background.jpg, or change the name here */
-  background-image: url('/bg.jpg'); 
+  background-image: url('/bg.jfif'); 
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* Keeps the background still on scroll */

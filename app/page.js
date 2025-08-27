@@ -3,7 +3,7 @@ export default function Home() {
     <main className="container">
       <div className="content">
         {/* Make sure your logo is named logo.png, or change the name here */}
-        <img src="/logo.jpg" alt="BizVibez Properties Logo" className="logo" />
+        <img src="/logo.jpeg" alt="BizVibez Properties Logo" className="logo" />
         
         <h1>Coming Soon</h1>
         
