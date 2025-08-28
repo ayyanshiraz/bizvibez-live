@@ -1,22 +1,21 @@
-"use client";
+import Image from 'next/image';
+import PropertyGrid from '../components/PropertyGrid';
+import clientPromise from '../lib/mongodb';
 
-import { useState, useEffect } from 'react';
+async function getProperties() {
+  try {
+    const client = await clientPromise;
+    const db = client.db("bizvibez");
+    const properties = await db.collection("properties").find({}).toArray();
+    return JSON.parse(JSON.stringify(properties));
+  } catch (error) {
+    console.error("Failed to fetch properties from DB", error);
+    return [];
+  }
+}
 
-export default function Home() {
-  const [properties, setProperties] = useState([]);
-
-  useEffect(() => {
-    async function fetchProperties() {
-      try {
-        const res = await fetch('/api/properties');
-        const data = await res.json();
-        setProperties(data.properties);
-      } catch (error) {
-        console.error("Failed to fetch properties:", error);
-      }
-    }
-    fetchProperties();
-  }, []);
+export default async function Home() {
+  const properties = await getProperties();
 
   return (
     <>
@@ -35,27 +34,7 @@ export default function Home() {
         </div>
       </main>
 
-      <section className="listings-section">
-        <h2>Featured Properties</h2>
-        <div className="property-grid">
-          {properties.map((property) => (
-            <div key={property._id} className="property-card">
-              <div className="property-image-placeholder">
-                Property Image
-              </div>
-              <div className="property-card-content">
-                <h3>{property.title}</h3>
-                <p className="property-location">{property.location}</p>
-                <div className="property-details">
-                  <span>{property.bedrooms} Beds</span>
-                  <span>{property.bathrooms} Baths</span>
-                </div>
-                <p className="property-price">${property.price.toLocaleString()}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <PropertyGrid properties={properties} />
     </>
   );
 }
