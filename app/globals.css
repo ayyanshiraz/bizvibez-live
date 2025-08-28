@@ -1,54 +1,222 @@
+/* --- Part 1: Hero Section & Video Background Styles --- */
 body {
-  /* --- BACKGROUND IMAGE --- */
-  /* Make sure your image is named background.jpg, or change the name here */
-  background-image: url('/bg.jfif'); 
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed; /* Keeps the background still on scroll */
-  
-  /* --- FONT & LAYOUT --- */
-  color: white; /* Change text color to be visible on the background */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.hero-container {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1rem;
 }
 
-/* Add a semi-transparent overlay to make text more readable */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
-  z-index: 1; /* Place overlay below the content */
+.hero-content {
+  max-width: 800px;
+  width: 100%;
 }
 
-/* Ensure our content appears above the overlay */
-.container {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  padding: 2rem;
-}
-
-.logo {
-  width: 150px; /* Adjust logo size as needed */
-  height: auto;
-  margin-bottom: 2rem;
-}
-
-h1 {
+.hero-title {
   font-size: 3.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-p {
-  font-size: 1.25rem;
-  color: #f0f0f0;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+.search-bar-placeholder {
+  display: flex;
+  background-color: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-bar-placeholder input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  color: #333;
+  background-color: transparent;
+}
+
+.search-bar-placeholder button {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-bar-placeholder button:hover {
+  background-color: #555;
+}
+
+
+/* --- Part 2: Listings Section Styling --- */
+.listings-section {
+  background-color: #ffffff;
+  color: #333;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.listings-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #222;
+}
+
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.property-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.property-image-placeholder {
+  height: 220px;
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.property-card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-card h3 {
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.property-location {
+  color: #666;
+  margin: 0 0 1rem 0;
+}
+
+.property-details {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.property-price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-top: auto;
+}
+
+/* --- Header & Navigation Styles --- */
+.main-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.main-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-items {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.menu-items a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s ease-in-out;
+}
+
+.menu-items a:hover {
+  border-bottom-color: white;
+}
+
+.logo-container {
+  /* This div holds our logo on the right */
 }
