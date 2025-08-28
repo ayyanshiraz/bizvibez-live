@@ -5,3 +5,5 @@ const nextConfig = {
     unoptimized: true,
   },
 };
+
+export default nextConfig; // This is the crucial line that was missing
