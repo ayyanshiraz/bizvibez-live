@@ -24,6 +24,10 @@ jobs:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: npm run build
 
+        # --- ADD THIS NEW STEP ---
+      - name: List files after build
+        run: ls -la
+
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
