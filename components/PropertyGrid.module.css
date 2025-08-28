@@ -1,0 +1,61 @@
+/* components/PropertyGrid.module.css */
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.propertyCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.propertyImage {
+  width: 100%;
+  height: 200px;
+}
+
+.propertyInfo {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.propertyInfo h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.propertyInfo p {
+  font-size: 0.9rem;
+  color: #666;
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+.details {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.price span {
+  color: #D4AF37;
+}

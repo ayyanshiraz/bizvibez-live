@@ -1,0 +1,153 @@
+/* components/Hero.module.css */
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.heroVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video covers the entire area */
+  transform: translate(-50%, -50%);
+  z-index: 0; /* Puts video behind other content */
+}
+
+.overlay {
+  position: relative;
+  z-index: 1; /* Puts overlay above the video */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Pushes header to top, content to center */
+  padding-bottom: 50px; /* Adjust as needed for search bar spacing */
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent header background */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #D4AF37; /* Gold highlight on hover */
+}
+
+.heroContent {
+  flex-grow: 1; /* Allows it to take available space between header and bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers content within its space */
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.heroContent h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: white;
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+.searchBar {
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+  border-radius: 8px;
+  padding: 1rem;
+  width: 80%;
+  max-width: 900px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #333; /* Default text color inside search bar */
+  /* Pushes the search bar to the bottom of the content area */
+}
+
+.searchBar .tabs {
+  display: flex;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.searchBar .tabs button {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #555;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.searchBar .tabs button.active {
+  color: #D4AF37;
+  border-bottom: 2px solid #D4AF37;
+  font-weight: bold;
+}
+
+.searchBar .tabs button:not(.active):hover {
+  color: #333;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputGroup input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.inputGroup .searchButton {
+  background-color: #007bff; /* Blue search button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.inputGroup .searchButton:hover {
+  background-color: #0056b3;
+}

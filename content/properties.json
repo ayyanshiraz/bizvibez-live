@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Downtown Apartment",
+    "description": "A beautiful and sunny apartment in the heart of the city, perfect for urban living in Lahore.",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "price": 2500000,
+    "image": "/images/1.png"
+  },
+  {
+    "id": 2,
+    "title": "Cozy Suburban House",
+    "description": "Perfect for a family, with a large backyard and quiet neighborhood, ideal for a peaceful life in Lahore.",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "price": 4500000,
+    "image": "/images/2.png"
+  },
+  {
+    "id": 3,
+    "title": "Rustic Countryside Cabin",
+    "description": "Escape the city and enjoy the peace and quiet of nature, a serene getaway near Lahore.",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "price": 1200000,
+    "image": "/images/3.jpeg"
+  }
+]

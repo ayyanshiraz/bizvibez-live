@@ -1,44 +1,38 @@
-"use client";
-
+// components/PropertyGrid.js
 import Image from 'next/image';
+import styles from './PropertyGrid.module.css'; // This line imports your new CSS file
 
-export default function PropertyGrid({ properties }) {
+const PropertyGrid = ({ properties }) => {
   return (
-    <section className="listings-section">
-      <h2>Featured Properties</h2>
-      {properties.length === 0 ? (
-        <p>No properties are currently available.</p>
-      ) : (
-        <div className="property-grid">
-          {properties.map((property) => (
-            <div key={property._id} className="property-card">
-              <div className="property-image-container">
-                {property.imageUrl ? (
-                  <Image
-                    src={property.imageUrl}
-                    alt={property.title}
-                    fill={true}
-                    style={{ objectFit: 'cover' }}
-                    className="property-image"
-                  />
-                ) : (
-                  <div className="property-image-placeholder">
-                    No Image Available
-                  </div>
-                )}
-              </div>
-              <div className="property-card-content">
-                <h3 className="property-title">{property.title}</h3>
-                <p className="property-location">{property.location}</p>
-                <div className="property-info-line">
-                  <span>{property.bedrooms} Beds, {property.bathrooms} Baths</span>
-                </div>
-                <p className="property-price">Start From <span>AED {property.price.toLocaleString()}</span></p>
-              </div>
+    <div className={styles.propertyGrid}>
+      {properties.map((property) => (
+        <div key={property.id} className={styles.propertyCard}>
+
+          <div className={styles.propertyImage}>
+            <Image 
+              src={property.image} 
+              alt={property.title} 
+              width={500}
+              height={300}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+          
+          <div className={styles.propertyInfo}>
+            <h2>{property.title}</h2>
+            <p>{property.description}</p>
+            <div className={styles.details}>
+              <span>{property.bedrooms} Beds, {property.bathrooms} Baths</span>
             </div>
-          ))}
+            <p className={styles.price}>
+              Start From <span>AED {property.price.toLocaleString()}</span>
+            </p>
+          </div>
+
         </div>
-      )}
-    </section>
+      ))}
+    </div>
   );
-}
+};
+
+export default PropertyGrid;

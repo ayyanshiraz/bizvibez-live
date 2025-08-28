@@ -1,38 +1,37 @@
+// app/page.js
+import fs from 'fs';
+import path from 'path';
+import Hero from '../components/Hero';
 import PropertyGrid from '../components/PropertyGrid';
-import clientPromise from '../lib/mongodb';
 
+// This function reads your property data from the local file
 async function getProperties() {
-  try {
-    const client = await clientPromise;
-    const db = client.db("bizvibez");
-    const properties = await db.collection("properties").find({}).toArray();
-    return JSON.parse(JSON.stringify(properties));
-  } catch (error) {
-    console.error("Failed to fetch properties from DB", error);
-    return [];
-  }
+  const filePath = path.join(process.cwd(), 'content', 'properties.json');
+  const jsonData = fs.readFileSync(filePath, 'utf-8');
+  const properties = JSON.parse(jsonData);
+  return properties;
 }
 
 export default async function Home() {
   const properties = await getProperties();
 
   return (
-    <>
-      <div className="video-background">
-        <video autoPlay loop muted playsInline>
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-      </div>
-      <main className="hero-container">
-        <div className="hero-content">
-          <h1 className="hero-title">Find Your Dream Home</h1>
-          <div className="search-bar-placeholder">
-            <input type="text" placeholder="Enter a location, property type, or keyword" />
-            <button type="submit">Search</button>
-          </div>
-        </div>
-      </main>
+    <main>
+      <Hero />
+
+      <h2 style={{
+        textAlign: 'center',
+        marginTop: '3rem',
+        marginBottom: '1rem',
+        fontSize: '2.5rem',
+        fontWeight: 'bold',
+        color: '#99347a'
+      }}>
+        Featured Properties
+      </h2>
+      
       <PropertyGrid properties={properties} />
-    </>
+
+    </main> // <-- This closing tag was likely missing
   );
-}
+} // <-- This closing brace was also likely missing
