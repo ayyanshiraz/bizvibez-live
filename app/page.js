@@ -27,7 +27,7 @@ export default async function Home() {
         fontWeight: 'bold',
         color: '#99347a'
       }}>
-        Featured Properties
+        Featured Properties:
       </h2>
       
       <PropertyGrid properties={properties} />
